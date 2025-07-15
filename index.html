@@ -1000,9 +1000,7 @@
         }
     </style>
 </head>
-
 <body class="body">
-
     <header class="header">
         <svg style="display:none">
             <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
@@ -1022,11 +1020,9 @@
                 <div id="planetTrail1"></div>
                 <div id="planetTrail2"></div>
                 <div id="planetTrail3"></div>
-
                 <div class="planets">
                     <div id="planet"></div>
                     <div id="star"></div>
-
                     <div id="starShadow"></div>
                     <div id="blackHoleDisk2"></div>
                     <div id="blackHole"></div>
@@ -1035,53 +1031,16 @@
             </div>
         </nav>
     </header>
-
     <main class="hero">
         <div class="stars" id="stars"></div>
         <div class="moon"></div>
         <div class="landscape"></div>
         <div class="landscape2"></div>
-
-        <!--<img src="./liquid-glass/upscalemedia-transformed.png" class="hero-person" />-->
-
         <div class="container">
             <div class="content">
-
-
-
-
-                <!--<span class="badge">LIMITED TIME OFFER</span>-->
-                <!--<h1>EXPLORE THE<br>COSMIC<br>UNIVERSE</h1>-->
                 <h1>YOU FOUND<br>THE GATE<br></h1>
                 <blockquote class="subtitle">Now find what’s behind it — where the silence breathes, and the dark remembers.</blockquote>
-                <!--<p class="subtitle">Discover the mysteries of space with our exclusive premium access to stunning cosmic
-                    imagery and data.</p>
-
-                <div class="features">
-                    <div class="feature">
-                        <!--<div class="feature-icon">✓</div>--
-                        <div class="feature-text">4K Ultra HD Quality</div>
-                    </div>
-                    <div class="feature">
-                        <!--<div class="feature-icon">✓</div>--
-                        <div class="feature-text">Unlimited Downloads</div>
-                    </div>
-                    <div class="feature">
-                        <!--<div class="feature-icon">✓</div>--
-                        <div class="feature-text">Expert Commentary</div>
-                    </div>
-                    <div class="feature">
-                        <!--<div class="feature-icon">✓</div>--
-                        <div class="feature-text">Weekly Updates</div>
-                    </div>
-                </div>
-
-                <div class="buttons">
-                    <a href="#" class="btn btn-primary">Get Started Now</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
-                </div>-->
             </div>
-
             <div class="product-card">
                 <div class="card-header">
                     <div class="header-dot"></div>
@@ -1096,40 +1055,27 @@
             </div>
         </div>
     </main>
-
     <div class="ff" style="width: 99.92vw; height: .1vh;"></div>
-
     <script>
         // Twinkle Stars
         document.addEventListener('DOMContentLoaded', function () {
             const starsContainer = document.getElementById('stars');
             const starCount = 150;
-
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
-
-
                 const size = Math.random() * 2.5 + 0.5;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-
-
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
-
-
                 star.style.animationDelay = `${Math.random() * 4}s`;
-
-
                 const randomBrightness = Math.random() * 0.5 + 0.5;
                 star.style.opacity = randomBrightness;
-
                 starsContainer.appendChild(star);
             }
         });
         // End
-
         // Random Sentences
         document.addEventListener('DOMContentLoaded', () => {
             const quotes = [
@@ -1147,10 +1093,8 @@
                 "The stars are just scars the night wears proudly — proof that even darkness has survived burning.",
                 "At night, nothing hunts you louder than your own silence.",
             ];
-
             const target = document.querySelector('.card-text');
             if (!target) return;
-
             const changeQuote = () => {
                 target.classList.add('hide');
                 setTimeout(() => {
@@ -1158,14 +1102,9 @@
                     target.classList.remove('hide');
                 }, 400);
             };
-
             changeQuote();
             /*setInterval(changeQuote, 10000);*/
         });
-
-
     </script>
-
 </body>
-
 </html>
