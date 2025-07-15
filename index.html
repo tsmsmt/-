@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.postimg.cc/D0dqth7S/005667d83bb1200eecaf5a4853d08421-removebg-preview.png"
+        type="image/x-icon">
+    <title>localhost:5500</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --Violet-Dark: #100511;
+            --Violet-Normal: #1F0B22;
+            --Violet-little-Normal: #3c1c41;
+            --Violet-Bright: #857188;
+            --Violet-more-Bright: #b597b9;
+            --Violet-too-Bright: #c8b6e2;
+            --lg-highlight: rgba(255, 255, 255, .85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--Violet-Normal);
+            min-height: 100vh;
+            animation: opacity 2s ease-in;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes opacity {
+
+            0%,
+            70% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body[unresolved] {
+            opacity: 0;
+            display: block;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--Violet-Dark);
+            border-radius: 5px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: var(--Violet-Bright);
+            border-radius: 5px;
+        }
+
+        body::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .header {
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: transparent;
+            backdrop-filter: url(#lg-dist) blur(2px);
+            isolation: isolate;
+
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            background: linear-gradient(140deg, var(--Violet-too-Bright) .1%, var(--Violet-Dark) 99.9%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: 5px;
+            -webkit-text-stroke: 1px var(--Violet-Dark);
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav a {
+            position: relative;
+            display: inline-block;
+            color: var(--Violet-more-Bright);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 5px 0;
+            transition: all 0.2s ease-in;
+        }
+
+        .nav a:hover {
+            color: var(--Violet-too-Bright);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 3px;
+            background: var(--Violet-too-Bright);
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav a:hover::after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        .hero {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            width: 100%;
+            min-height: 100vh;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(200deg, var(--Violet-Dark) 40%, var(--Violet-Normal) 60%);
+            padding: 80px 5% 30px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: .8;
+                transform: translateY(0);
+            }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--Violet-Bright);
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .moon {
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            background-color: var(--Violet-too-Bright);
+            border-radius: 50%;
+            filter: blur(1px);
+            box-shadow: 0 0 80px rgba(200, 182, 226, 0.836);
+            pointer-events: none;
+            animation: twinkle2 3s infinite cubic-bezier(.55, 1.17, 1, .8);
+        }
+
+        @keyframes twinkle2 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(200, 182, 226, 0.836);
+            }
+
+            50% {
+                box-shadow: 0 0 110px rgba(200, 182, 226, 0.836);
+            }
+        }
+
+        .landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            background-color: var(--Violet-little-Normal);
+            clip-path: polygon(0 100%,0 82%,5% 30%,10% 78%,15% 26%,22% 74%,29% 22%,36% 70%,43% 20%,50% 68%,57% 18%,64% 72%,71% 24%,78% 76%,85% 28%,92% 80%,100% 30%,100% 100%);
+            z-index: 2;
+
+        }
+
+        .landscape2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            background-color: var(--Violet-little-Normal);
+            clip-path: polygon(0 80%,6% 38%,12% 76%,18% 34%,25% 72%,32% 28%,40% 70%,48% 26%,56% 68%,64% 30%,72% 70%,80% 34%,88% 74%,94% 30%,100% 76%,100% 100%,0 100%);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--Violet-little-Normal);
+            box-shadow: inset 90px 5px 80px hsla(0, 0%, 0%, 0.466);
+            color: var(--Violet-more-Bright);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            position: relative;
+            bottom: 90px;
+            max-width: 550px;
+        }
+
+        .content h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 80px;
+            color: var(--Violet-Bright);
+            -webkit-text-stroke: 1px var(--Violet-more-Bright);
+            letter-spacing: 1px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            width: 550px;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--Violet-more-Bright);
+            margin-bottom: 25px;
+            margin-left: 10px;
+            padding-left: 30px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 52px;
+            border-left: 0.05em solid currentColor;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0 35px;
+            width: 550px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-icon {
+            width: 22px;
+            height: 22px;
+            background-color: rgba(92, 225, 230, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5ce1e6;
+            font-size: 0.8rem;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--Violet-more-Bright);
+            color: var(--Violet-Dark);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--Violet-Bright);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--Violet-more-Bright);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--Violet-Bright);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .product-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--Violet-little-Normal);
+            opacity: .6;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px var(--Violet-Dark);
+            margin-left: auto;
+        }
+
+        .card-header {
+            height: 35px;
+            background-color: var(--Violet-Dark);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 5px;
+        }
+
+        .header-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+            background-color: var(--Violet-more-Bright);
+        }
+
+        .header-dot:nth-child(1) {
+            background-color: var(--Violet-little-Normal);
+        }
+
+        .header-dot:nth-child(2) {
+            background-color: var(--Violet-Bright);
+            animation-delay: 0.3s;
+        }
+
+        .header-dot:nth-child(3) {
+            background-color: var(--Violet-more-Bright);
+            animation-delay: 0.6s;
+        }
+
+        .header-dot:hover {
+            cursor: pointer;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card-content {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--Violet-more-Bright);
+        }
+
+        .card-text {
+            font-size: 0.85rem;
+            color: var(--Violet-more-Bright);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            transition: opacity .4s ease, transform .4s ease;
+            display: inline-block;
+            height: 50px;
+        }
+
+        .card-text.hide {
+            opacity: 0;
+            transform: scale(10px);
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--Violet-too-Bright);
+            color: var(--Violet-Normal);
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .card-button:hover {
+            background-color: var(--Violet-more-Bright);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 10;
+            font-weight: 300;
+        }
+
+        .footer a {
+            color: #5ce1e6;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1324px) {}
+
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+                gap: 30px;
+            }
+
+            h1 {
+                font-size: 3.2rem;
+            }
+
+            .product-card {
+                max-width: 380px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 100px 20px 40px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .content {
+                max-width: 100%;
+                order: 1;
+            }
+
+            .product-card {
+                margin: 0 auto 30px;
+                order: 0;
+            }
+
+            .features {
+                max-width: 500px;
+                margin: 25px auto 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px 30px;
+            }
+
+            h1 {
+                font-size: 2.7rem;
+            }
+
+            .moon {
+                width: 80px;
+                height: 80px;
+                top: 15%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .nav {
+                gap: 15px;
+            }
+
+            .nav a {
+                font-size: 0.85rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            .badge {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+        /* Solar System */
+        .hjd {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 60px;
+            height: 30px;
+            transform: scale(0.2);
+        }
+
+        .planets {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            display: flex;
+
+        }
+
+        #planetTrail1,
+        #planetTrail2,
+        #planetTrail3 {
+            outline: solid rgb(101, 101, 101) 1px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #planetTrail1::after,
+        #planetTrail2::after,
+        #planetTrail3::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50%;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #planetTrail1::after {
+            background-color: rgb(213, 213, 120);
+        }
+
+        #planetTrail2::after {
+            background-color: rgb(115, 174, 231);
+        }
+
+        #planetTrail3::after {
+            background-color: rgb(180, 73, 49);
+        }
+
+        #planetTrail1 {
+            width: 120px;
+            height: 120px;
+            animation: trails1 4s infinite;
+        }
+
+        #planetTrail2 {
+            width: 170px;
+            height: 170px;
+            animation: trails2 4s infinite;
+        }
+
+        #planetTrail3 {
+            width: 220px;
+            height: 220px;
+            animation: trails3 4s infinite;
+        }
+
+        @keyframes trails1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            40% {
+                transform: rotate(360deg);
+                width: 120px;
+                height: 120px;
+            }
+
+            50% {
+                width: 0px;
+                height: 0px;
+            }
+
+            90% {
+                width: 0px;
+                height: 0px;
+            }
+
+            100% {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @keyframes trails2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            40% {
+                transform: rotate(250deg);
+                width: 170px;
+                height: 170px;
+            }
+
+            50% {
+                width: 0px;
+                height: 0px;
+            }
+
+            90% {
+                width: 0px;
+                height: 0px;
+            }
+
+            100% {
+                width: 170px;
+                height: 170px;
+            }
+        }
+
+        @keyframes trails3 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            40% {
+                transform: rotate(170deg);
+                width: 220px;
+                height: 220px;
+            }
+
+            50% {
+                width: 0px;
+                height: 0px;
+            }
+
+            90% {
+                width: 0px;
+                height: 0px;
+            }
+
+            100% {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        #star {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255, 170, 0);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: bouncingStar 4s infinite;
+        }
+
+        #starShadow {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background-color: rgb(255, 170, 0);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            filter: blur(5px);
+            opacity: 0.3;
+            animation: shadowAnimation 4s infinite;
+        }
+
+        @keyframes bouncingStar {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+
+            10% {
+                transform: translate(-50%, -30%);
+            }
+
+            20% {
+                transform: translate(-50%, -50%);
+            }
+
+            30% {
+                transform: translate(-50%, -30%);
+            }
+
+            40% {
+                transform: translate(-50%, -50%);
+                width: 50px;
+                height: 50px;
+            }
+
+            50% {
+                width: 0px;
+                height: 0px;
+            }
+
+            90% {
+                width: 0px;
+                height: 0px;
+            }
+
+            100% {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @keyframes shadowAnimation {
+            0% {
+                opacity: 0.1;
+            }
+
+            10% {
+                opacity: 0.4;
+            }
+
+            20% {
+                opacity: 0.1;
+            }
+
+            30% {
+                opacity: 0.4;
+            }
+
+            40% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            90% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
+        }
+
+        #blackHole {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--Violet-Normal);
+            outline: orange solid 5px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: bouncingBlackHole 4s infinite;
+        }
+
+        @keyframes bouncingBlackHole {
+            0% {
+                height: 0px;
+                width: 0px;
+            }
+
+            40% {
+                width: 0px;
+                height: 0px;
+            }
+
+            50% {
+                width: 50px;
+                height: 50px;
+            }
+
+            90% {
+                width: 50px;
+                height: 50px;
+            }
+
+            100% {
+                width: 0px;
+                height: 0px;
+            }
+        }
+
+        #blackHoleDisk1 {
+            position: absolute;
+            width: 68px;
+            height: 68px;
+            clip-path: inset(50% 0 0 0);
+            border: black 10px solid;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            animation: diskAn 4s infinite;
+        }
+
+        #blackHoleDisk2 {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            clip-path: inset(0 0 50% 0);
+            border: rgb(245, 174, 8) 10px solid;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(55deg);
+            animation: diskAn 4s infinite;
+        }
+
+        @keyframes diskAn {
+            0% {
+                height: 0px;
+                width: 0px;
+                border: orange 0px solid;
+            }
+
+            40% {
+                width: 0px;
+                height: 0px;
+                border: orange 0px solid;
+            }
+
+            50% {
+                width: 88px;
+                height: 88px;
+                border: orange 18px solid;
+            }
+
+            90% {
+                width: 88px;
+                height: 88px;
+                border: orange 18px solid;
+            }
+
+            100% {
+                width: 0px;
+                height: 0px;
+                border: orange 0px solid;
+            }
+        }
+
+        #planet {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            animation: planetAn 4s infinite;
+        }
+
+        @keyframes planetAn {
+            0% {
+                opacity: 0;
+                transform: translate(0px, 0px);
+                z-index: 1;
+            }
+
+            50% {
+                opacity: 0;
+                transform: translate(0px, 0px);
+                z-index: 1;
+            }
+
+            58% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+                transform: translate(100px, 40px);
+                z-index: 1;
+            }
+
+            71% {
+                z-index: 0;
+            }
+
+            90% {
+                z-index: 0;
+                opacity: 1;
+                transform: translate(-10px, 70px);
+            }
+
+            100% {
+                transform: translate(-10px, 70px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <header class="header">
+        <svg style="display:none">
+            <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.09 0.09" numOctaves="1" seed="1500" result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+                <feDisplacementMap in="SourceGraphic" in2="blurred" scale="35" xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </svg>
+        <a href="#" class="logo">TSMSMT</a>
+        <nav class="nav">
+            <a href="https://tsmsmt.com/">Hood</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+            <a href="#">Join</a>
+            <div class="hjd">
+                <div id="planetTrail1"></div>
+                <div id="planetTrail2"></div>
+                <div id="planetTrail3"></div>
+
+                <div class="planets">
+                    <div id="planet"></div>
+                    <div id="star"></div>
+
+                    <div id="starShadow"></div>
+                    <div id="blackHoleDisk2"></div>
+                    <div id="blackHole"></div>
+                    <div id="blackHoleDisk1"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="stars" id="stars"></div>
+        <div class="moon"></div>
+        <div class="landscape"></div>
+        <div class="landscape2"></div>
+
+        <!--<img src="./liquid-glass/upscalemedia-transformed.png" class="hero-person" />-->
+
+        <div class="container">
+            <div class="content">
+
+
+
+
+                <!--<span class="badge">LIMITED TIME OFFER</span>-->
+                <!--<h1>EXPLORE THE<br>COSMIC<br>UNIVERSE</h1>-->
+                <h1>YOU FOUND<br>THE GATE<br></h1>
+                <blockquote class="subtitle">Now find what’s behind it — where the silence breathes, and the dark remembers.</blockquote>
+                <!--<p class="subtitle">Discover the mysteries of space with our exclusive premium access to stunning cosmic
+                    imagery and data.</p>
+
+                <div class="features">
+                    <div class="feature">
+                        <!--<div class="feature-icon">✓</div>--
+                        <div class="feature-text">4K Ultra HD Quality</div>
+                    </div>
+                    <div class="feature">
+                        <!--<div class="feature-icon">✓</div>--
+                        <div class="feature-text">Unlimited Downloads</div>
+                    </div>
+                    <div class="feature">
+                        <!--<div class="feature-icon">✓</div>--
+                        <div class="feature-text">Expert Commentary</div>
+                    </div>
+                    <div class="feature">
+                        <!--<div class="feature-icon">✓</div>--
+                        <div class="feature-text">Weekly Updates</div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <a href="#" class="btn btn-primary">Get Started Now</a>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>-->
+            </div>
+
+            <div class="product-card">
+                <div class="card-header">
+                    <div class="header-dot"></div>
+                    <div class="header-dot"></div>
+                    <div class="header-dot"></div>
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Night Vibe ...</h2>
+                    <p class="card-text"></p>
+                    <a href="#" class="card-button">Launch Explorer</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="ff" style="width: 99.92vw; height: .1vh;"></div>
+
+    <script>
+        // Twinkle Stars
+        document.addEventListener('DOMContentLoaded', function () {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+
+                const size = Math.random() * 2.5 + 0.5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+
+                star.style.animationDelay = `${Math.random() * 4}s`;
+
+
+                const randomBrightness = Math.random() * 0.5 + 0.5;
+                star.style.opacity = randomBrightness;
+
+                starsContainer.appendChild(star);
+            }
+        });
+        // End
+
+        // Random Sentences
+        document.addEventListener('DOMContentLoaded', () => {
+            const quotes = [
+                "There’s something about the night that makes silence feel louder and thoughts run deeper.",
+                "The night doesn’t speak — it listens, holds your chaos in its stillness, and turns your scars into stars.",
+                "At night, the world forgets to pretend — the masks fall, the noise dies, and all that's left is you, naked beneath the weight of your unspoken truths.",
+                "The night doesn't heal — it reveals. It peels back the layers you hid all day and whispers truths you're too scared to face in daylight.",
+                "In the silence of 3AM, even shadows feel honest. That’s when the soul stops lying to itself.",
+                "Midnight isn’t dark — it’s honest. It's the hour where loneliness stops pretending to be freedom.",
+                "Some nights don’t end, they just settle into your bones and stay there, waiting to be named.",
+                "The night doesn’t comfort you — it dares you to survive yourself.",
+                "Darkness isn’t the absence of light — it’s the presence of everything you try to forget.",
+                "You don’t get lost at night. You meet the version of you that daylight keeps in chains.",
+                "Some nights feel less like time, and more like a place — a place where the broken go to feel whole in their own ruin.",
+                "The stars are just scars the night wears proudly — proof that even darkness has survived burning.",
+                "At night, nothing hunts you louder than your own silence.",
+            ];
+
+            const target = document.querySelector('.card-text');
+            if (!target) return;
+
+            const changeQuote = () => {
+                target.classList.add('hide');
+                setTimeout(() => {
+                    target.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+                    target.classList.remove('hide');
+                }, 400);
+            };
+
+            changeQuote();
+            /*setInterval(changeQuote, 10000);*/
+        });
+
+
+    </script>
+
+</body>
+
+</html>
